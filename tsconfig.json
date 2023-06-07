@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@config/*": ["./config/*"]
+    },
+    "module": "commonjs",
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "moduleResolution": "node"
+  },
+  "ts-node": {
+    "esm": true
+  }
+}
