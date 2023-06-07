@@ -3,7 +3,7 @@ import userRepository from "repositories/userRepository";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-type CreateUserParams = Pick<users, "email" | "password" | "name">;
+export type CreateUserParams = Pick<users, "name" | "email" | "password">;
 
 async function signUp({ name, email, password }: CreateUserParams) {
   const isEmailAlreadyRegistered = await userRepository.findUserByEmail(email);
