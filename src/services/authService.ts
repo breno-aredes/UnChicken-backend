@@ -1,6 +1,7 @@
 import { users } from "@prisma/client";
 import userRepository from "repositories/userRepository";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 type CreateUserParams = Pick<users, "email" | "password" | "name">;
 
@@ -18,6 +19,34 @@ async function signUp({ name, email, password }: CreateUserParams) {
   });
 }
 
+export type SignInParams = Pick<users, "email" | "password">;
+
+type SignInResult = {
+  token: string;
+};
+
+// | string é temporario até criar os erros.
+async function signIn(params: SignInParams): Promise<SignInResult | string> {
+  const { email, password } = params;
+
+  const user = await userRepository.findUserByEmail(email);
+
+  if (!user) return "not found maluko";
+
+  const isPasswordValid = await bcrypt.compare(password, user.password);
+
+  if (!isPasswordValid) return "senha errada doidão";
+
+  const token = jwt.sign(
+    { email: user.email, userId: user.id, name: user.name },
+    process.env.JWT_SECRET,
+    { expiresIn: "10h" }
+  );
+
+  return token;
+}
+
 export default {
   signUp,
+  signIn,
 };
