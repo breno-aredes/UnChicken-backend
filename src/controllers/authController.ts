@@ -7,10 +7,19 @@ export async function signUp(req: Request, res: Response) {
 
   try {
     const user = await authService.signUp({ name, email, password });
-    return res.status(httpStatus.CREATED).send(user);
+    res.status(httpStatus.CREATED).send(user);
   } catch (error) {
     console.log(error);
   }
 }
 
-export async function signIn() {}
+export async function signIn(req: Request, res: Response) {
+  const { email, password } = req.body;
+
+  try {
+    const result = await authService.signIn({ email, password });
+    res.status(httpStatus.OK).send(result);
+  } catch (error) {
+    console.log(error);
+  }
+}
