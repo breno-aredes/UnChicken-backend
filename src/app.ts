@@ -12,7 +12,7 @@ app.use(express.json());
 
 app
   .get("/health", (_req, res) => res.send("OK!"))
-  .use("auth", userRouter)
+  .use("/auth", userRouter)
   .use(handlingError);
 
 export function init(): Promise<Express> {

@@ -6,10 +6,9 @@ export async function signUp(req: Request, res: Response, next: NextFunction) {
   const { name, email, password } = req.body;
 
   try {
-    const user = await authService.signUp({ name, email, password });
-    res.status(httpStatus.CREATED).send(user);
+    await authService.signUp({ name, email, password });
+    res.sendStatus(httpStatus.CREATED);
   } catch (error) {
-    console.log(error);
     next(error);
   }
 }
