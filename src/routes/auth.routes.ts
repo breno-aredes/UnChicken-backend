@@ -7,7 +7,7 @@ import { signInSchema, signUpSchema } from "schemas/authSchemas";
 const userRouter = Router();
 
 userRouter
-  .post("/signup", schemaValidate(signUpSchema), signUp)
-  .post("/signin", schemaValidate(signInSchema), signIn);
+  .post("/sign-up", schemaValidate(signUpSchema), signUp)
+  .post("/sign-in", schemaValidate(signInSchema), signIn);
 
 export { userRouter };
