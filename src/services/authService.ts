@@ -40,7 +40,7 @@ async function signIn(params: SignInParams): Promise<SignInResult | string> {
   const token = jwt.sign(
     { email: user.email, userId: user.id, name: user.name },
     process.env.JWT_SECRET,
-    { expiresIn: "10h" }
+    { expiresIn: "10h", noTimestamp: true }
   );
 
   return token;
