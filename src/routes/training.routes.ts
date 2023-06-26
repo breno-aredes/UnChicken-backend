@@ -1,10 +1,16 @@
 import { Router } from "express";
 
-import { createTraining } from "controllers/trainingController";
+import {
+  createTraining,
+  getUserTrainings,
+} from "controllers/trainingController";
 import { authToken } from "middlewares/auth.validate";
 
 const trainingRouter = Router();
 
-trainingRouter.all("/*", authToken).post("", createTraining);
+trainingRouter
+  .all("/*", authToken)
+  .post("", createTraining)
+  .get("", getUserTrainings);
 
 export { trainingRouter };

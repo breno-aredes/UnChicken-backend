@@ -24,3 +24,18 @@ export async function createTraining(
     next(error);
   }
 }
+
+export async function getUserTrainings(
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) {
+  const { userId } = req.tokenData;
+
+  try {
+    const trainings = await trainingService.getUserTrainings(userId);
+    res.status(httpStatus.CREATED).send(trainings);
+  } catch (error) {
+    next(error);
+  }
+}
