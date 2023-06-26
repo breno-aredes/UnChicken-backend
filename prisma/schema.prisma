@@ -14,4 +14,28 @@ model users {
   password  String    @db.VarChar(255)
   createdat DateTime  @default(now()) @db.Timestamp(6)
   updatedat DateTime? @db.Timestamp(6)
+  trainings training[]
+}
+
+model training {
+  id          Int       @id @default(autoincrement())
+  name        String
+  type        String
+  description String
+  userId      Int
+  user        users      @relation(fields: [userId], references: [id])
+  exercises   exercise[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime? @db.Timestamp(6) @updatedAt
+}
+
+model exercise {
+  id            Int       @id @default(autoincrement())
+  name          String
+  repetitions   Int
+  series        Int
+  trainingId    Int
+  training      training  @relation(fields: [trainingId], references: [id])
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime? @db.Timestamp(6) @updatedAt
 }

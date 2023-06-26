@@ -17,7 +17,18 @@ async function createUser(data: Prisma.usersUncheckedCreateInput) {
   });
 }
 
+async function findUserById(userId: number): Promise<users | null> {
+  return (
+    prisma.users.findFirst({
+      where: {
+        id: userId,
+      },
+    }) || null
+  );
+}
+
 export default {
   findUserByEmail,
   createUser,
+  findUserById,
 };

@@ -17,8 +17,8 @@ export async function signIn(req: Request, res: Response, next: NextFunction) {
   const { email, password } = req.body;
 
   try {
-    const result = await authService.signIn({ email, password });
-    res.status(httpStatus.OK).send(result);
+    const { token } = await authService.signIn({ email, password });
+    res.status(httpStatus.OK).send(token);
   } catch (error) {
     next(error);
   }

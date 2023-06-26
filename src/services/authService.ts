@@ -27,8 +27,7 @@ type SignInResult = {
   token: string;
 };
 
-// | string é temporario até criar os erros.
-async function signIn(params: SignInParams): Promise<SignInResult | string> {
+async function signIn(params: SignInParams): Promise<SignInResult> {
   const { email, password } = params;
 
   const user = await userRepository.findUserByEmail(email);
@@ -45,7 +44,7 @@ async function signIn(params: SignInParams): Promise<SignInResult | string> {
     { expiresIn: "10h", noTimestamp: true }
   );
 
-  return token;
+  return { token };
 }
 
 export default {

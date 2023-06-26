@@ -4,6 +4,7 @@ import cors from "cors";
 import { userRouter } from "routes/auth.routes";
 import { connectDb, disconnectDB } from "@config/database";
 import { handlingError } from "middlewares/error-handling";
+import { trainingRouter } from "routes/training.routes";
 
 const app: Express = express();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app
   .get("/health", (_req, res) => res.send("OK!"))
   .use("/auth", userRouter)
+  .use("/training", trainingRouter)
   .use(handlingError);
 
 export function init(): Promise<Express> {

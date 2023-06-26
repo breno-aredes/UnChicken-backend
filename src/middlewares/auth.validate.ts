@@ -21,6 +21,8 @@ async function authToken(req: AuthRequest, _res: Response, next: NextFunction) {
   try {
     const verifyToken = jwt.verify(token, process.env.JWT_SECRET) as JwtPayload;
 
+    if (!verifyToken) return "esse token nem nadaver";
+
     const currentTime = Math.floor(Date.now() / 1000);
     if (verifyToken.exp < currentTime) return "esse token ta vencidão irmão";
 
