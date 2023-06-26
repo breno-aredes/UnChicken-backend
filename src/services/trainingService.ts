@@ -14,6 +14,18 @@ export type Training = {
   userId: number;
 };
 
+async function getUserTrainings(userId: number) {
+  const user = await userRepository.findUserById(userId);
+
+  if (!user) throw errors.invalidCredentilsError();
+
+  const trainings = await trainingRepository.getUserTrainings(userId);
+
+  if (!trainings) throw errors.notFoundError();
+
+  return trainings;
+}
+
 async function createTraining({
   name,
   type,
@@ -38,4 +50,5 @@ async function createTraining({
 
 export default {
   createTraining,
+  getUserTrainings,
 };

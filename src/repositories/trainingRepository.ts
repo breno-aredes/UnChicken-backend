@@ -25,6 +25,20 @@ async function createTraining({
   });
 }
 
+async function getUserTrainings(userId: number): Promise<Training[]> {
+  const trainings = await prisma.training.findMany({
+    where: {
+      userId: userId,
+    },
+    include: {
+      exercises: true,
+    },
+  });
+
+  return trainings;
+}
+
 export default {
   createTraining,
+  getUserTrainings,
 };
