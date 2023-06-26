@@ -32,6 +32,11 @@ async function getUserTrainings(userId: number): Promise<Training[]> {
     },
     include: {
       exercises: true,
+      user: {
+        select: {
+          name: true,
+        },
+      },
     },
   });
 
