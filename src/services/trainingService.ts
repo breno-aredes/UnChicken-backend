@@ -26,6 +26,20 @@ async function getUserTrainings(userId: number) {
   return trainings;
 }
 
+async function getTraining(userId: number, trainingId: number) {
+  const user = await userRepository.findUserById(userId);
+
+  if (!user) throw errors.invalidCredentilsError();
+
+  const training = await trainingRepository.getTrainingById(trainingId);
+
+  if (!training) throw errors.notFoundError();
+
+  if (training.userId !== userId) throw errors.forBiddenError();
+
+  return training;
+}
+
 async function createTraining({
   name,
   type,
@@ -51,4 +65,5 @@ async function createTraining({
 export default {
   createTraining,
   getUserTrainings,
+  getTraining,
 };

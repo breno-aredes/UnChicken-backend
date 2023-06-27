@@ -25,13 +25,16 @@ async function createTraining({
   });
 }
 
-async function getUserTrainings(userId: number): Promise<Training[]> {
+type TrainingWithoutExercises = Omit<Training, "exercises">;
+
+async function getUserTrainings(
+  userId: number
+): Promise<TrainingWithoutExercises[]> {
   const trainings = await prisma.training.findMany({
     where: {
       userId: userId,
     },
     include: {
-      exercises: true,
       user: {
         select: {
           name: true,
@@ -43,7 +46,20 @@ async function getUserTrainings(userId: number): Promise<Training[]> {
   return trainings;
 }
 
+async function getTrainingById(trainingId: number): Promise<Training> {
+  const training = await prisma.training.findUnique({
+    where: {
+      id: trainingId,
+    },
+    include: {
+      exercises: true,
+    },
+  });
+  return training;
+}
+
 export default {
   createTraining,
   getUserTrainings,
+  getTrainingById,
 };

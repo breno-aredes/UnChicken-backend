@@ -1,20 +1,20 @@
-import { AplicationError } from "protocols";
+import { ApplicationError } from "protocols";
 
-function notFoundError(): AplicationError {
+function notFoundError(): ApplicationError {
   return {
     name: "NotFoundError",
     message: "No result for this search!",
   };
 }
 
-function unauthorizedError(): AplicationError {
+function unauthorizedError(): ApplicationError {
   return {
     name: "UnauthorizedError",
     message: "You must be signed in to continue",
   };
 }
 
-function conflictError(message: string): AplicationError {
+function conflictError(message: string): ApplicationError {
   return {
     name: "ConflictError",
     message,
@@ -28,9 +28,17 @@ function invalidCredentilsError() {
   };
 }
 
+function forBiddenError(): ApplicationError {
+  return {
+    name: "ForBiddenError",
+    message: "Forbidden Error!",
+  };
+}
+
 export default {
   notFoundError,
   unauthorizedError,
   conflictError,
   invalidCredentilsError,
+  forBiddenError,
 };
