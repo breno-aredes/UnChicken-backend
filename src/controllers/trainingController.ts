@@ -34,7 +34,27 @@ export async function getUserTrainings(
 
   try {
     const trainings = await trainingService.getUserTrainings(userId);
-    res.status(httpStatus.CREATED).send(trainings);
+    res.status(httpStatus.OK).send(trainings);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function getTraining(
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) {
+  const { trainingId } = req.params;
+  const { userId } = req.tokenData;
+  console.log(trainingId);
+
+  try {
+    const training = await trainingService.getTraining(
+      userId,
+      parseInt(trainingId as string)
+    );
+    res.status(httpStatus.OK).send(training);
   } catch (error) {
     next(error);
   }

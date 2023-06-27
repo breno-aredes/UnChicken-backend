@@ -1,9 +1,9 @@
-import { AplicationError } from "protocols";
+import { ApplicationError } from "protocols";
 import { Response, Request, NextFunction } from "express";
 import httpStatus from "http-status";
 
 export function handlingError(
-  err: AplicationError,
+  err: ApplicationError,
   _req: Request,
   res: Response,
   _next: NextFunction
@@ -19,6 +19,9 @@ export function handlingError(
   }
   if (err.name === "NotFoundError") {
     return res.status(httpStatus.NOT_FOUND).send({ message: err.message });
+  }
+  if (err.name === "ForBiddenError") {
+    return res.status(httpStatus.FORBIDDEN).send({ message: err.message });
   }
 
   return res.status(httpStatus.INTERNAL_SERVER_ERROR).send({
