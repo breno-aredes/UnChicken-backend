@@ -1,10 +1,10 @@
 import express, { Express } from "express";
 import cors from "cors";
 
-import { userRouter } from "routes/auth.routes";
-import { connectDb, disconnectDB } from "@config/database";
-import { handlingError } from "middlewares/error-handling";
-import { trainingRouter } from "routes/training.routes";
+import { userRouter } from "./routes/auth.routes";
+import { connectDb, disconnectDB } from "./config/database";
+import { handlingError } from "./middlewares/error-handling";
+import { trainingRouter } from "./routes/training.routes";
 
 const app: Express = express();
 

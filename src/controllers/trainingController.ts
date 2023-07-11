@@ -1,7 +1,7 @@
 import { Response, NextFunction } from "express";
 import httpStatus from "http-status";
-import { AuthRequest } from "middlewares/auth.validate";
-import trainingService from "services/trainingService";
+import { AuthRequest } from "../middlewares/auth.validate";
+import trainingService from "../services/trainingService";
 
 export async function createTraining(
   req: AuthRequest,
@@ -47,7 +47,6 @@ export async function getTraining(
 ) {
   const { trainingId } = req.params;
   const { userId } = req.tokenData;
-  console.log(trainingId);
 
   try {
     const training = await trainingService.getTraining(

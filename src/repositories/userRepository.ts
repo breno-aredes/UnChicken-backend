@@ -1,4 +1,4 @@
-import { prisma } from "@config/database";
+import { prisma } from "../config/database";
 import { Prisma, users } from "@prisma/client";
 
 async function findUserByEmail(email: string): Promise<users | null> {
