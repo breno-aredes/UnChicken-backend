@@ -1,8 +1,8 @@
 import { users } from "@prisma/client";
-import userRepository from "repositories/userRepository";
+import userRepository from "../repositories/userRepository";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import errors from "errors";
+import errors from "../errors";
 
 export type CreateUserParams = Pick<users, "name" | "email" | "password">;
 

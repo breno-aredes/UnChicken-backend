@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import httpStatus from "http-status";
-import authService from "services/authService";
+import authService from "../services/authService";
 
 export async function signUp(req: Request, res: Response, next: NextFunction) {
   const { name, email, password } = req.body;

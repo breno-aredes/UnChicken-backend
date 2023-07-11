@@ -1,6 +1,6 @@
-import errors from "errors";
-import trainingRepository from "repositories/trainingRepository";
-import userRepository from "repositories/userRepository";
+import errors from "../errors";
+import trainingRepository from "../repositories/trainingRepository";
+import userRepository from "../repositories/userRepository";
 
 export type Training = {
   name: string;

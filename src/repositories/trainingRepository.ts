@@ -1,5 +1,5 @@
-import { prisma } from "@config/database";
-import { Training } from "services/trainingService";
+import { prisma } from "../config/database";
+import { Training } from "../services/trainingService";
 
 async function createTraining({
   name,

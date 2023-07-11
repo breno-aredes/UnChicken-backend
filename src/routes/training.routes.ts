@@ -4,8 +4,8 @@ import {
   createTraining,
   getTraining,
   getUserTrainings,
-} from "controllers/trainingController";
-import { authToken } from "middlewares/auth.validate";
+} from "../controllers/trainingController";
+import { authToken } from "../middlewares/auth.validate";
 
 const trainingRouter = Router();
 
