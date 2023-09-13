@@ -15,6 +15,7 @@ model users {
   createdat DateTime  @default(now()) @db.Timestamp(6)
   updatedat DateTime? @db.Timestamp(6)
   trainings training[]
+  reports   reports[]
 }
 
 model training {
@@ -38,4 +39,16 @@ model exercise {
   training      training  @relation(fields: [trainingId], references: [id])
   createdAt     DateTime  @default(now())
   updatedAt     DateTime? @db.Timestamp(6) @updatedAt
+  reports   reports[]
+}
+
+model reports {
+  id             Int      @id @default(autoincrement())
+  userId         Int
+  user           users    @relation(fields: [userId], references: [id])
+  exerciseId     Int
+  exercise       exercise @relation(fields: [exerciseId], references: [id])
+  averageReps    Float    
+  createdAt     DateTime  @default(now())
+  
 }
