@@ -23,6 +23,9 @@ export function handlingError(
   if (err.name === "ForBiddenError") {
     return res.status(httpStatus.FORBIDDEN).send({ message: err.message });
   }
+  if (err.name === "ValidationError") {
+    return res.status(httpStatus.BAD_REQUEST).send({ message: err.message });
+  }
 
   return res.status(httpStatus.INTERNAL_SERVER_ERROR).send({
     error: "InternalServerError",

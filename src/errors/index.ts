@@ -35,10 +35,18 @@ function forBiddenError(): ApplicationError {
   };
 }
 
+function validationError(message: string): ApplicationError {
+  return {
+    name: "ValidationError",
+    message,
+  };
+}
+
 export default {
   notFoundError,
   unauthorizedError,
   conflictError,
   invalidCredentilsError,
   forBiddenError,
+  validationError,
 };
