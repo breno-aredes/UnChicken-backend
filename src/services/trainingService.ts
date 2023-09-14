@@ -7,6 +7,7 @@ export type Training = {
   type: string;
   description: string;
   exercises: {
+    id?: number;
     name: string;
     repetitions: number;
     series: number;
