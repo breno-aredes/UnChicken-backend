@@ -3,6 +3,7 @@ import { Router } from "express";
 import {
   createTraining,
   getTraining,
+  getTrainingReports,
   getUserTrainings,
 } from "../controllers/trainingController";
 import { authToken } from "../middlewares/auth.validate";
@@ -15,6 +16,7 @@ trainingRouter
   .all("/*", authToken)
   .post("", schemaValidate(createTrainingSchema), createTraining)
   .get("", getUserTrainings)
-  .get("/:trainingId", getTraining);
+  .get("/:trainingId", getTraining)
+  .get("/:trainingId/reports", getTrainingReports);
 
 export { trainingRouter };

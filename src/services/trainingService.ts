@@ -11,6 +11,13 @@ export type Training = {
     name: string;
     repetitions: number;
     series: number;
+    resumes?: {
+      id: number;
+      userId: number;
+      exerciseId: number;
+      averageReps: number;
+      createdAt: Date;
+    }[];
   }[];
   userId: number;
 };
@@ -63,8 +70,21 @@ async function createTraining({
   return training;
 }
 
+async function getTrainingReports(trainingId: number, userId: number) {
+  const user = await userRepository.findUserById(userId);
+
+  if (!user) throw errors.invalidCredentilsError();
+
+  const training = await trainingRepository.getTrainingReports(trainingId);
+
+  if (!training) throw errors.notFoundError();
+
+  return training;
+}
+
 export default {
   createTraining,
   getUserTrainings,
   getTraining,
+  getTrainingReports,
 };
