@@ -58,8 +58,25 @@ async function getTrainingById(trainingId: number): Promise<Training> {
   return training;
 }
 
+async function getTrainingReports(trainingId: number): Promise<Training> {
+  const training = await prisma.training.findUnique({
+    where: {
+      id: trainingId,
+    },
+    include: {
+      exercises: {
+        include: {
+          reports: true,
+        },
+      },
+    },
+  });
+  return training;
+}
+
 export default {
   createTraining,
   getUserTrainings,
   getTrainingById,
+  getTrainingReports,
 };

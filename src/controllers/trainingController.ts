@@ -58,3 +58,22 @@ export async function getTraining(
     next(error);
   }
 }
+
+export async function getTrainingReports(
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) {
+  const { trainingId } = req.params;
+  const { userId } = req.tokenData;
+
+  try {
+    const training = await trainingService.getTrainingReports(
+      parseInt(trainingId as string),
+      userId
+    );
+    res.status(httpStatus.OK).send(training);
+  } catch (error) {
+    next(error);
+  }
+}
