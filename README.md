@@ -32,7 +32,7 @@ Em desenvolvimento
 ```bash
   npm run dev
 ```
-5. Para iniciar o projeto frontend, siga as instruções no repositório [Unchicken-front-end](https://github.com/UnChicken-App/UnChicken-front-end).
+5. Para iniciar o projeto frontend, siga as instruções no repositório [Unchicken-front-end](https://github.com/UnChicken-App/UnChicken-frontend).
 
 ## Contato
 
