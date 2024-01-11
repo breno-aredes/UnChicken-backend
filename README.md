@@ -16,23 +16,25 @@ Em desenvolvimento
 ## Instalação e uso
 
 1.  clone o repositório:
+
 ```bash
    git clone git@github.com:UnChicken-App/UnChicken-back-end.git
 ```
 
 2. Instale as dependências:
+
 ```bash
   cd UnChicken-back-end
   npm install
 ```
 
 3. Certifique-se de ter o PostgreSQL instalado e em execução.
-    - Caso ainda não tenha, veja as instruções de instalação para [Linux (Ubuntu)](https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart-pt) ou [WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/pt-br/windows/wsl/tutorials/wsl-database#install-postgresql).
 
+   - Caso ainda não tenha, veja as instruções de instalação para [Linux (Ubuntu)](https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart-pt) ou [WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/pt-br/windows/wsl/tutorials/wsl-database#install-postgresql).
 
 4. Configuração do banco de dados:
-    - Crie um arquivo `.env` na raiz do projeto com as configurações do banco de dados. Você pode utilizar arquivo `.env.example` na raiz do projeto como referência:
-   
+   - Crie um arquivo `.env` na raiz do projeto com as configurações do banco de dados. Você pode utilizar arquivo `.env.example` na raiz do projeto como referência:
+
 ```env
    POSTGRES_USERNAME=seu_usuario
    POSTGRES_PASSWORD=sua_senha
@@ -52,6 +54,7 @@ Em desenvolvimento
 ```
 
 6. Execute o seguinte comando para iniciar o servidor:
+
 ```bash
   npm run dev
 ```
@@ -61,8 +64,8 @@ Em desenvolvimento
 ## Estrutura do Projeto
 
 - `/prisma`: Responsável por gerenciar a integração do Prisma com o projeto.
-   - `schema.prisma`: Define os esquemas do banco de dados Prisma, 
-   - `migrations/`: Para as migrações do banco de dados (PSQL).
+  - `schema.prisma`: Define os esquemas do banco de dados Prisma,
+  - `migrations/`: Para as migrações do banco de dados (PSQL).
 - `/src`: Contém o código-fonte da aplicação.
   - `/config`: Configurações do projeto, incluindo o arquivo `database.ts` para as configurações do banco de dados.
   - `/controllers`: Controladores da aplicação.
@@ -76,6 +79,11 @@ Em desenvolvimento
   - `protocols.ts`: Contratos, interfaces ou tipos compartilhados.
   - `server.ts`: Arquivo para iniciar o servidor.
 
+### Design Atual do Banco de Dados
+
+![Design do Banco de Dados](images/design_database.jpg)
+
+_Observação: O título "Design atual do Banco de Dados" indica que a imagem reflete o estado atual, mas pode ser alterada conforme necessário durante o desenvolvimento do projeto._
 
 ## Contato
 
