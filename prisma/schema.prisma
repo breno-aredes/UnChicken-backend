@@ -22,7 +22,7 @@ model training {
   id          Int       @id @default(autoincrement())
   name        String
   type        String
-  description String
+  description String?
   userId      Int
   user        users      @relation(fields: [userId], references: [id])
   exercises   exercise[]
