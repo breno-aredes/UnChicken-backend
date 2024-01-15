@@ -77,3 +77,23 @@ export async function getTrainingReports(
     next(error);
   }
 }
+
+export async function deleteTraining(
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) {
+  const { trainingId } = req.params;
+  const { userId } = req.tokenData;
+
+  try {
+    await trainingService.deleteTraining(
+      parseInt(trainingId as string),
+      userId
+    );
+
+    res.status(httpStatus.OK).send(`deleted`);
+  } catch (error) {
+    next(error);
+  }
+}
