@@ -82,9 +82,20 @@ async function getTrainingReports(trainingId: number, userId: number) {
   return training;
 }
 
+async function deleteTraining(trainingId: number, userId: number) {
+  const user = await userRepository.findUserById(userId);
+
+  if (!user) throw errors.invalidCredentilsError();
+
+  await trainingRepository.deleteTraining(trainingId);
+
+  return;
+}
+
 export default {
   createTraining,
   getUserTrainings,
   getTraining,
   getTrainingReports,
+  deleteTraining,
 };

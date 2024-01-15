@@ -74,9 +74,25 @@ async function getTrainingReports(trainingId: number): Promise<Training> {
   return training;
 }
 
+async function deleteTraining(trainingId: number) {
+  await prisma.training.delete({
+    where: {
+      id: trainingId,
+    },
+    include: {
+      exercises: {
+        include: {
+          reports: true,
+        },
+      },
+    },
+  });
+}
+
 export default {
   createTraining,
   getUserTrainings,
   getTrainingById,
   getTrainingReports,
+  deleteTraining,
 };

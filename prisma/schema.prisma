@@ -36,7 +36,7 @@ model exercise {
   repetitions   Int
   series        Int
   trainingId    Int
-  training      training  @relation(fields: [trainingId], references: [id])
+  training      training  @relation(fields: [trainingId], references: [id], onDelete: Cascade)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime? @db.Timestamp(6) @updatedAt
   reports   reports[]
@@ -47,7 +47,7 @@ model reports {
   userId         Int
   user           users    @relation(fields: [userId], references: [id])
   exerciseId     Int
-  exercise       exercise @relation(fields: [exerciseId], references: [id])
+  exercise       exercise @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
   averageReps    Float    
   createdAt     DateTime  @default(now())
   
