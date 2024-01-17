@@ -33,13 +33,13 @@ Em desenvolvimento
 1.  clone o repositório:
 
 ```bash
-   git clone git@github.com:UnChicken-App/UnChicken-back-end.git
+   git clone git@github.com:UnChicken-App/UnChicken-backend.git
 ```
 
 2. Instale as dependências:
 
 ```bash
-  cd UnChicken-back-end
+  cd UnChicken-backend
   npm install
 ```
 
@@ -74,7 +74,7 @@ Em desenvolvimento
   npm run dev
 ```
 
-7. Para iniciar o projeto frontend, siga as instruções no repositório [Unchicken-front-end](https://github.com/UnChicken-App/UnChicken-frontend).
+7. Para iniciar o projeto frontend, siga as instruções no repositório [Unchicken-frontend](https://github.com/UnChicken-App/UnChicken-frontend).
 
 ## Estrutura do Projeto
 
