@@ -8,10 +8,25 @@ Em desenvolvimento
 
 ## Tecnologias Utilizadas
 
-- TypeScript
-- Node.js
-- Express
-- Prisma (ORM)
+- [TypeScript](https://www.typescriptlang.org/) : Superset do JavaScript que adiciona tipagem estática.
+  
+- [Node.js](https://nodejs.org/) : Ambiente de execução JavaScript do lado do servidor.
+
+- [Express](https://expressjs.com/) : Framework para construção de aplicativos web com Node.js.
+
+- [PostgreSQL](https://www.postgresql.org/) : Sistema de gerenciamento de banco de dados relacional de código aberto.
+
+- [Prisma](https://www.prisma.io/) : Mapeador de objeto-relacional (ORM) para Node.js e TypeScript.
+
+- [Bcrypt](https://www.npmjs.com/package/bcrypt) : Biblioteca para hash de senhas.
+
+- [Cors](https://www.npmjs.com/package/cors) : Middleware para habilitar o controle de acesso a recursos de uma origem diferente.
+
+- [Dotenv](https://www.npmjs.com/package/dotenv) : Carregador de variáveis de ambiente.
+
+- [Joi](https://joi.dev/) : Biblioteca para validação de dados.
+
+- [Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) : Implementação de tokens JWT para Node.js.
 
 ## Instalação e uso
 
@@ -83,7 +98,11 @@ Em desenvolvimento
 
 ![Design do Banco de Dados](images/design_database.jpg)
 
-_Observação: O título "Design atual do Banco de Dados" indica que a imagem reflete o estado atual, mas pode ser alterada conforme necessário durante o desenvolvimento do projeto._
+_Observações:_ 
+ - _As informações necessárias para o gerenciamento de sessão, como o vencimento do token, são armazenadas no próprio token JWT, eliminando a necessidade de criar uma tabela no PostgreSQL para sessions._
+ - _O título "Design atual do Banco de Dados" indica que a imagem reflete o estado atual, mas pode ser alterada conforme necessário durante o desenvolvimento do projeto._
+
+
 
 ## Contato
 
